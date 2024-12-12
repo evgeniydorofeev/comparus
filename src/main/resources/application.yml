@@ -16,15 +16,14 @@ data-sources:
      username: login
      name: first_name     
      surname: last_name
-#  - name: data-base-2
-#    strategy: "postgres"
-#    url: jdbc:postgresql://localhost:5432/postgres
-#    table: users   
-#    user: testuser   
-#    password: testpass
-#    mapping: 
-#     id: user_id
-#     username: login
-#     name: first_name     
-#     surname: last_name
- 
+  - name: data-base-2
+    strategy: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    table: users  
+    user: postgres   
+    password: postgres
+    mapping: 
+     id: user_id
+     username: login
+     name: first_name     
+     surname: last_name
