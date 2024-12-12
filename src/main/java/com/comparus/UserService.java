@@ -23,15 +23,15 @@ public class UserService {
 
 	private Map<String, JdbcTemplate> jdbcTemplates = new ConcurrentHashMap<>();
 
-	public List<UserDto> getUsers() {
+	public List<UserDto> getUsers(Map<String, String> filter) {
 		List<UserDto> users = new ArrayList<>();
 		for (DataSourceConfig cfg : config.getDataSources()) {
-			users.addAll(getUsers(cfg));
+			users.addAll(getUsers(cfg, filter));
 		}
 		return users;
 	}
 
-	private List<UserDto> getUsers(DataSourceConfig cfg) {
+	private List<UserDto> getUsers(DataSourceConfig cfg, Map<String, String> filter) {
 		JdbcTemplate jdbcTemplate = jdbcTemplates.get(cfg.getName());
 		if (jdbcTemplate == null) {
 			DataSource dataSource = DataSourceBuilder.create().url(cfg.getUrl()).username(cfg.getUser())
@@ -40,7 +40,7 @@ public class UserService {
 			jdbcTemplates.put(cfg.getName(), jdbcTemplate);
 		}
 		;
-		List<UserDto> users = jdbcTemplate.query(cfg.getSelectUserQuery(),
+		List<UserDto> users = jdbcTemplate.query(cfg.getSelectUserQuery(filter),
 				new BeanPropertyRowMapper<UserDto>(UserDto.class));
 		return users;
 	}

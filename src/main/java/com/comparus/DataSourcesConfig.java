@@ -1,6 +1,9 @@
 package com.comparus;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -21,6 +24,16 @@ public class DataSourcesConfig {
 		private String username;
 		private String name;
 		private String surname;
+		
+		public String map(String field) {
+			return switch (field) {
+			case "id" -> id;
+			case "username" -> username;
+			case "name" -> name;
+			case "surname" -> surname;
+			default -> throw new IllegalArgumentException("Unknown field: " + field);
+			};
+		}
 	}
 
 	@Setter
@@ -34,9 +47,17 @@ public class DataSourcesConfig {
 		private String password;
 		private Mapping mapping;
 
-		public String getSelectUserQuery() {
-			return "select %s id, %s username, %s name, %s surname from %s".formatted(mapping.getId(),
+		public String getSelectUserQuery(Map<String, String> filter) {
+			String query = "select %s id, %s username, %s name, %s surname from %s".formatted(mapping.getId(),
 					mapping.getUsername(), mapping.getName(), mapping.getSurname(), table);
+			if (!filter.isEmpty()) {
+				List<String> predicates = new ArrayList<>();
+				filter.forEach((k, v) -> {
+					predicates.add(mapping.map(k) + " like '" + v + "'"); 
+				});
+				query = query + " where " + predicates.stream().collect(Collectors.joining(" and "));
+			}
+			return query;
 		}
 
 		public String getDriverClassName() {
