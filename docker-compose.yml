@@ -1,24 +1,17 @@
-name: slideshow
+name: comparus
 services:
-  postgres:
-    container_name: postgres
+  db1:
     image: postgres
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
-    - pgdata:/var/lib/postgresql/data
+    - ./init.sql:/docker-entrypoint-initdb.d/create_database.sql
 
-  slideshow:
-    container_name: slideshow
-    image: slideshow
+  comparus:
+    image: comparus
     ports:
     - 8080:8080
     depends_on:
-    - postgres
-    environment:
-      spring.datasource.url: jdbc:postgresql://postgres:5432/postgres
-
-volumes:
-  pgdata:
+    - db1

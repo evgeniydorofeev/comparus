@@ -47,7 +47,7 @@ public class DataSourcesConfig {
 	private List<DataSourceConfig> dataSources;
 
 	private static String getDriverClassName(String strategy) {
-		if (strategy.equals("postgresql")) {
+		if (strategy.equals("postgres")) {
 			return "org.postgresql.Driver";
 		}
 		throw new IllegalArgumentException("Unsupported strategy: " + strategy);

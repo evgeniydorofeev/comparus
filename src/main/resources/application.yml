@@ -6,7 +6,7 @@ spring:
 
 data-sources: 
   - name: data-base-1
-    strategy: "postgres"
+    strategy: postgres
     url: jdbc:postgresql://localhost:5432/postgres
     table: users  
     user: postgres   
