@@ -17,6 +17,8 @@ import lombok.Setter;
 @Getter
 public class DataSourcesConfig {
 
+	private List<DataSourceConfig> dataSources;
+
 	@Setter
 	@Getter
 	public static class Mapping {
@@ -48,8 +50,8 @@ public class DataSourcesConfig {
 		private Mapping mapping;
 
 		public String getSelectUserQuery(Map<String, String> filter) {
-			String query = "select %s id, %s username, %s name, %s surname from %s".formatted(mapping.getId(),
-					mapping.getUsername(), mapping.getName(), mapping.getSurname(), table);
+			String query = "select %s id, %s username, %s name, %s surname from %s"
+					.formatted(mapping.getId(), mapping.getUsername(), mapping.getName(), mapping.getSurname(), table);
 			if (!filter.isEmpty()) {
 				List<String> predicates = new ArrayList<>();
 				filter.forEach((k, v) -> {
@@ -61,17 +63,11 @@ public class DataSourcesConfig {
 		}
 
 		public String getDriverClassName() {
-			return DataSourcesConfig.getDriverClassName(strategy);
+			if (strategy.equals("postgres")) {
+				return "org.postgresql.Driver";
+			}
+			throw new IllegalArgumentException("Unsupported strategy: " + strategy);
 		}
-	}
-
-	private List<DataSourceConfig> dataSources;
-
-	private static String getDriverClassName(String strategy) {
-		if (strategy.equals("postgres")) {
-			return "org.postgresql.Driver";
-		}
-		throw new IllegalArgumentException("Unsupported strategy: " + strategy);
 	}
 }
 
