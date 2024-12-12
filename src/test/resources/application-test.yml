@@ -8,7 +8,7 @@ spring:
 data-sources: 
   - name: data-base-1
     strategy: postgres
-    url: jdbc:tc:postgres:17:///postgres
+    url: ${CONTAINER.URL}
     table: users  
     user: postgres   
     password: postgres
