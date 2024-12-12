@@ -7,4 +7,4 @@ first_name text,
 last_name text
 );
 
-insert into users values ('example-user-id-2', 'user-2', 'Testuser', 'Testov');
+insert into users values ('2', 'user-2', 'Jane', 'Doe');
