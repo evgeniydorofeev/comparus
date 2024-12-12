@@ -8,18 +8,7 @@ spring:
 data-sources: 
   - name: data-base-1
     strategy: postgres
-    url: jdbc:postgresql://localhost/postgres
-    table: users  
-    user: postgres   
-    password: postgres
-    mapping: 
-     id: user_id
-     username: login
-     name: first_name     
-     surname: last_name
-  - name: data-base-2
-    strategy: postgres
-    url: jdbc:postgresql://localhost/postgres
+    url: jdbc:tc:postgres:17:///postgres
     table: users  
     user: postgres   
     password: postgres
