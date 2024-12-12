@@ -14,11 +14,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.comparus.DataSourcesConfig.DataSourceConfig;
 
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-
 @SpringBootApplication
 public class Comparus {
 
@@ -38,14 +33,6 @@ public class Comparus {
 				jdbcTemplates.put(cfg.getName(), jdbcTemplate);
 			}
 			return jdbcTemplates;
-		}
-
-		@Bean
-		public Docket api() {
-			return new Docket(DocumentationType.SWAGGER_2)
-					.select()
-					.apis(RequestHandlerSelectors.any())
-					.paths(PathSelectors.any()).build();
 		}
 	}
 
