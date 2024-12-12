@@ -39,9 +39,8 @@ public class UserService {
 			jdbcTemplate = new JdbcTemplate(dataSource);
 			jdbcTemplates.put(cfg.getName(), jdbcTemplate);
 		}
-		;
-		List<UserDto> users = jdbcTemplate.query(cfg.getSelectUserQuery(filter),
-				new BeanPropertyRowMapper<UserDto>(UserDto.class));
+		String query = cfg.getSelectUserQuery(filter);
+		List<UserDto> users = jdbcTemplate.query(query, new BeanPropertyRowMapper<UserDto>(UserDto.class));
 		return users;
 	}
 }
