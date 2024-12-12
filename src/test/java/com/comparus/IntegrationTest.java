@@ -18,9 +18,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @Testcontainers
-@ContextConfiguration(initializers = {IntegrationTests.Initializer.class})
+@ContextConfiguration(initializers = {IntegrationTest.Initializer.class})
 @TestPropertySource(properties = "spring.config.location=classpath:/application-test.yml")
-public class IntegrationTests {
+public class IntegrationTest {
 
 	@Autowired
 	TestRestTemplate testRestTemplate;
