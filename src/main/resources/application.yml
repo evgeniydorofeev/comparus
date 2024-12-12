@@ -18,7 +18,7 @@ data-sources:
      surname: last_name
   - name: data-base-2
     strategy: postgres
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5433/postgres
     table: users  
     user: postgres   
     password: postgres
