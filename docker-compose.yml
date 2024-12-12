@@ -6,7 +6,6 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      PGPORT: 5432
     volumes:
     - ./init-db1.sql:/docker-entrypoint-initdb.d/create_database.sql
 
@@ -16,7 +15,6 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      PGPORT: 5433
     volumes:
     - ./init-db2.sql:/docker-entrypoint-initdb.d/create_database.sql
 
@@ -24,7 +22,5 @@ services:
     image: comparus
     ports:
     - 8080:8080
-    depends_on:
-    - db1
 
 
