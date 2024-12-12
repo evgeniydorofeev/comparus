@@ -27,10 +27,6 @@
 			<artifactId>HikariCP</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
@@ -51,7 +47,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>slideshow</finalName>
+		<finalName>comparus</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -65,7 +61,7 @@
 					<verbose>true</verbose>
 					<images>
 						<image>
-							<name>slideshow</name>
+							<name>comparus</name>
 						</image>
 					</images>
 				</configuration>
