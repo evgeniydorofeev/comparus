@@ -1,4 +1,4 @@
-package comparus;
+package com.comparus;
 
 import lombok.Getter;
 import lombok.Setter;

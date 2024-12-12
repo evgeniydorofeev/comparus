@@ -1,4 +1,4 @@
-package comparus;
+package com.comparus;
 
 import java.util.List;
 
