@@ -41,7 +41,7 @@ public class ComparusApiIT {
 			.withInitScript("init-db.sql");
 
 	@Test
-	void test() {
+	void testUsers() {
 		UserDto[] dtos = testRestTemplate.getForObject("/users", UserDto[].class);
 		assertEquals(1, dtos.length);
 		assertEquals("example-user-id-1", dtos[0].id);
