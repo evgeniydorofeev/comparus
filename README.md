@@ -27,4 +27,4 @@ You can filter the data by adding params to url as `<field>=<value>` pairs:
 `curl -X GET http://localhost:8080/users?id=1`
 
 OpenAPI documentation is at `http://localhost:8080/v3/api-docs`.<br/>
-Swagger UI is at `http://localhost:8080/swagger-ui/index.html`
+Swagger UI is at `http://localhost:8080/swagger-ui/index.html`.
