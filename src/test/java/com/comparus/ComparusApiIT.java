@@ -15,7 +15,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @Testcontainers
-public class IntegrationTest {
+public class ComparusApiIT {
 
 	@Autowired
 	TestRestTemplate testRestTemplate;
