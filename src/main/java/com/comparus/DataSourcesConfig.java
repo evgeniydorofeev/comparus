@@ -55,11 +55,11 @@ public class DataSourcesConfig {
 			if (!filter.isEmpty()) {
 				List<String> predicates = new ArrayList<>();
 				filter.forEach((k, v) -> {
-					predicates.add(mapping.map(k) + " like '" + v + "'"); 
+					predicates.add(mapping.map(k) + "='" + v + "'"); 
 				});
 				query = query + " where " + predicates.stream().collect(Collectors.joining(" and "));
 			}
-			return query;
+			return query;	
 		}
 
 		public String getDriverClassName() {
