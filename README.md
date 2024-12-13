@@ -3,7 +3,7 @@
 To get started:
 
 1. Run `mvnw clean package` to build an application image.
-2. Run `docker-compose up -d` in the project root folder to run the application.
+2. Run `docker-compose up` in the project root folder to run the application.
 
 Docker-compose will run two instances of PosgreSQL. On the first run it will initialize 
 the databases with the following scripts:
