@@ -17,9 +17,6 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @Testcontainers
 public class ComparusApiIT {
 
-	@Autowired
-	TestRestTemplate testRestTemplate;
-	
 	@DynamicPropertySource
 	static void registerPgJdbcUrl(DynamicPropertyRegistry registry) {
 		registry.add("data-sources[0].strategy", () -> "postgres");
@@ -33,14 +30,15 @@ public class ComparusApiIT {
 		registry.add("data-sources[0].mapping.surname", () -> "last_name");
 	}
 
+	@Autowired
+	TestRestTemplate testRestTemplate;
+
 	@Container
 	@SuppressWarnings("resource")
 	static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17")
-			.withDatabaseName("postgres")
 			.withUsername("postgres")
 			.withPassword("postgres")
-			.withInitScript("init-db.sql")
-			.withExposedPorts(5432);
+			.withInitScript("init-db.sql");
 
 	@Test
 	void test() {
