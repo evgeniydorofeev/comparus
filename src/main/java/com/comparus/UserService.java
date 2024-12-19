@@ -30,7 +30,7 @@ public class UserService {
 
 	private List<UserDto> getUsers(DataSourceConfig cfg, Map<String, String> filter) {
 		JdbcTemplate jdbcTemplate = jdbcTemplates.get(cfg.getName());
-		String query = cfg.getSelectUserQuery(filter);
+		String query = cfg.getSelectUsersQuery(filter);
 		List<UserDto> users = jdbcTemplate.query(query, new BeanPropertyRowMapper<UserDto>(UserDto.class));
 		return users;
 	}

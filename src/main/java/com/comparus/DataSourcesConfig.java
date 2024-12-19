@@ -49,7 +49,7 @@ public class DataSourcesConfig {
 		private String password;
 		private Mapping mapping;
 
-		public String getSelectUserQuery(Map<String, String> filter) {
+		public String getSelectUsersQuery(Map<String, String> filter) {
 			String query = "select %s id, %s username, %s name, %s surname from %s"
 					.formatted(mapping.getId(), mapping.getUsername(), mapping.getName(), mapping.getSurname(), table);
 			if (!filter.isEmpty()) {
