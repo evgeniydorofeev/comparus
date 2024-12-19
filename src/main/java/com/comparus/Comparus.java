@@ -21,7 +21,7 @@ public class Comparus {
 	public class SpringConfig {
 
 		@Bean
-		public Map<String, JdbcTemplate> jdbcTemples(DataSourcesConfig dataSourcesConfig) {
+		public Map<String, JdbcTemplate> jdbcTemplates(DataSourcesConfig dataSourcesConfig) {
 			Map<String, JdbcTemplate> jdbcTemplates = new HashMap<>();
 			for (DataSourceConfig cfg : dataSourcesConfig.getDataSources()) {
 				DataSource dataSource = DataSourceBuilder.create()
