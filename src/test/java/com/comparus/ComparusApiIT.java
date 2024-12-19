@@ -18,9 +18,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @Testcontainers
 public class ComparusApiIT {
 	
-	@SuppressWarnings("resource")
 	@Container
 	@AutoClose
+	@SuppressWarnings("resource")
 	static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17")
 			.withUsername("postgres")
 			.withPassword("postgres")
