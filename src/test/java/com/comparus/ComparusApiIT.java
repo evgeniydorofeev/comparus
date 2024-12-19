@@ -2,6 +2,7 @@ package com.comparus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.AutoClose;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +17,14 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @Testcontainers
 public class ComparusApiIT {
+	
+	@SuppressWarnings("resource")
+	@Container
+	@AutoClose
+	static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17")
+			.withUsername("postgres")
+			.withPassword("postgres")
+			.withInitScript("init-db.sql");
 
 	@DynamicPropertySource
 	static void registerPgJdbcUrl(DynamicPropertyRegistry registry) {
@@ -32,13 +41,6 @@ public class ComparusApiIT {
 
 	@Autowired
 	TestRestTemplate testRestTemplate;
-
-	@Container
-	@SuppressWarnings("resource")
-	static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17")
-			.withUsername("postgres")
-			.withPassword("postgres")
-			.withInitScript("init-db.sql");
 
 	@Test
 	void testUsers() {
